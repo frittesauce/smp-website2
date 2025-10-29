@@ -1,1 +1,14 @@
 @import 'tailwindcss';
+@import '@catppuccin/tailwindcss/mocha.css';
+
+@theme {
+	--dark: '.dark';
+}
+
+:root {
+	color-scheme: light dark;
+}
+body {
+	background-color: var(--color-ctp-base);
+	color: var(--color-ctp-text);
+}
