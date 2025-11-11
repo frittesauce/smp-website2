@@ -2,26 +2,24 @@
 	import MarkdownText from '$lib/components/MarkdownText.svelte';
 
 	export let data;
+	console.log(data);
 </script>
 
 <svelte:head>
-	<title>{data.title}</title>
+	<title>{data.pages.title}</title>
 </svelte:head>
 
 <div class="flex w-full flex-row">
 	<div>
 		<h1>for later probably</h1>
 	</div>
-	<div class="w-full">
-		<span class=" text-3xl font-bold">{data.title}</span>
+	<div class="prose w-full">
+		<span class=" text-3xl font-bold">{data.pages.title}</span>
 		<br />
-		<MarkdownText md={data.content}></MarkdownText>
+		<MarkdownText extra_class="markdown-content" md={data.pages.content}></MarkdownText>
 	</div>
 	<div>
-		<img
-			src="https://media1.tenor.com/m/pFz1Q12_hXEAAAAd/cat-holding-head-cat.gif"
-			alt="cat going crazy"
-			class=" h-64 w-64"
-		/>
+		<p>{data.infoboxes.title}</p>
+		<img src={data.infoboxes.image_url} />
 	</div>
 </div>

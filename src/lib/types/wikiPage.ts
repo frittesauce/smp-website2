@@ -6,3 +6,9 @@ export interface WikiPage {
   created_at: Date,
   updated_at: Date,
 }
+
+export interface InfoBox {
+  id: number,
+  title: string,
+  image_url: string,
+}

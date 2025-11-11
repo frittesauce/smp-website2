@@ -3,7 +3,10 @@
 	import { gfmPlugin } from 'svelte-exmarkdown/gfm';
 
 	export let md: string;
+	export let extra_class: string;
 	const plugins = [gfmPlugin()];
 </script>
 
-<Markdown {md} {plugins} />
+<div class={extra_class}>
+	<Markdown {md} {plugins} />
+</div>

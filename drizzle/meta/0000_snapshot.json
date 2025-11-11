@@ -1,9 +1,46 @@
 {
-  "id": "8d76faf4-948f-4fe6-afc7-e8b0ac1b4706",
+  "id": "9a26a152-9ea8-495c-86a5-572f034971eb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.infoboxes": {
+      "name": "infoboxes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data": {
+          "name": "data",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.pages": {
       "name": "pages",
       "schema": "",
@@ -45,10 +82,30 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
+        },
+        "infobox_id": {
+          "name": "infobox_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "pages_infobox_id_infoboxes_id_fk": {
+          "name": "pages_infobox_id_infoboxes_id_fk",
+          "tableFrom": "pages",
+          "tableTo": "infoboxes",
+          "columnsFrom": [
+            "infobox_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
